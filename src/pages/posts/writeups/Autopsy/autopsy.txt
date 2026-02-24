@@ -1,0 +1,5 @@
+ip - börjjade klolla i registry men hittade inget
+
+programs password - sortera på namn så alla /users/ kom på ett ställe
+
+https://rorywag.gitbook.io/sleuthifer/digital-forensics/powershell-history

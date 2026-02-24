@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+---
+
+<Base title="Projects — Portfolio" current="/projects">
+
+  <div class="page-header animate-in">
+    <span class="label">Projects</span>
+    <h1>Shit I've done</h1>
+    <p class="subtitle">Tools, scripts, and research projects from coursework and personal exploration.</p>
+  </div>
+
+  <div class="card-grid">
+    <Card
+    title="Masters Thesis - current"
+    description="Optimizing Machine Learning algorithms and Neural networks to perform threat detection on resource constrained MCUs"
+    date="2026-Current"
+    tags={["Machine Learning", "Neural networks", "threat Detection", "embedded"]}
+    />
+    <Card
+    title="Summer Project GKN Aerospace 2025"
+    description="Computervison using segmentation to detect and blur parts in production due to export control."
+    date="summer 2025"
+    tags={["Machine Learning", "YOLO", "computer vision", "python", "RTSP"]}
+    />
+    <Card
+    title="PhishMailerV2"
+    description="A GUI based phishing application, similear to the first PhishMailer but more advanced features"
+    date="2025 - current"
+    tags={["Python", "Flask", "SQL"]}
+    />
+    <Card
+    title="Cloud Machine learning intrusion detection"
+    description="Compared three algorithms on their accuracy aswell ass resource usage when it comes to intrusion detection"
+    date="Dec-2025"
+    tags={["Machine Learning", "python", "threat Detection"]}
+    />
+    <Card
+    title="Batchlor Thesis - AI threat Detection"
+    description="Compared multiple supervised machine learning algorithms with focus on imbalanced Dataset"
+    href="https://www.diva-portal.org/smash/get/diva2:1979453/FULLTEXT01.pdf"
+    date="Mars 2025 - June 2025"
+    tags={["Python", "Machine Learning", "Scikit-Learn"]}
+    />
+    <Card
+      title="PhishMailer"
+      description="A CLI tool that lets you create spearphishing emails"
+      href="https://github.com/BiZken/PhishMailer"
+      date="2020-2021"
+      tags={["Social Engineering", "Python", "Phishing"]}
+    />
+  </div>
+
+</Base>

@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  date: string;
+  tags?: string[];
+  date?: string;
+  accentTag?: string;
+  external?: boolean;
+}
+
+const { title, description, href, tags = [], date, accentTag, external } = Astro.props;
+---
+
+<a
+  href={href}
+  class="card animate-in"
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <div class="card-title">{title}</div>
+  <div class="card-desc">{description}</div>
+  <div class="card-meta">
+    {accentTag && <span class="tag accent">{accentTag}</span>}
+    {tags.map(tag => <span class="tag">{tag}</span>)}
+    {date && <span class="card-date">{date}</span>}
+  </div>
+</a>
