@@ -27,6 +27,12 @@ This is where my project came in: to create a proof-of-concept (PoC) application
 (_Fun fact: 90% of all the commerical planes in the sky have GKN parts on it_)
 
 
+### Things Used
+- Label Studio
+- Yolo
+- Flask
+- MinIO Bucket
+
 # MORE TO COME
 
 ![Files](./images/GKN/Resultat2.png "Result")

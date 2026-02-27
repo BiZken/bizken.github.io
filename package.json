@@ -2,10 +2,12 @@
   "name": "cybersec-portfolio",
   "type": "module",
   "version": "1.0.0",
+  "homepage": "https://bizken.github.io/your-repo-name",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy": "gh-pages -d ."
   },
   "dependencies": {
     "astro": "^5.2.0",

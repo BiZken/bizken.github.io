@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Card from '../components/Card.astro';
+import CardCurrent from '../components/Card-Current.astro';
+
 ---
 
 <Base title="Projects — Portfolio" current="/projects">
@@ -12,7 +14,7 @@ import Card from '../components/Card.astro';
   </div>
 
   <div class="card-grid">
-    <Card
+    <CardCurrent
     title="Masters Thesis - current"
     description="Optimizing Machine Learning algorithms and Neural networks to perform threat detection on resource constrained MCUs"
     date="2026-Current"
@@ -22,17 +24,20 @@ import Card from '../components/Card.astro';
     title="Summer Project GKN Aerospace 2025"
     description="Computervison using segmentation to detect and blur parts in production due to export control."
     date="summer 2025"
+    href="/posts/GKN"
     tags={["Machine Learning", "YOLO", "computer vision", "python", "RTSP"]}
     />
     <Card
     title="PhishMailerV2"
     description="A GUI based phishing application, similear to the first PhishMailer but more advanced features"
+    href="/posts/PhishMailerV2"
     date="2025 - current"
     tags={["Python", "Flask", "SQL"]}
     />
     <Card
     title="Cloud Machine learning intrusion detection"
     description="Compared three algorithms on their accuracy aswell ass resource usage when it comes to intrusion detection"
+    href="https://github.com/sooox-cc/ids"
     date="Dec-2025"
     tags={["Machine Learning", "python", "threat Detection"]}
     />

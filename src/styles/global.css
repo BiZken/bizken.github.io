@@ -449,3 +449,60 @@ footer {
   max-width: 100%;
   overflow: hidden;
 }
+
+
+/* ── Cards ── */
+.card-grid { display: grid; gap: 1rem; }
+
+.card-current {
+  background: #0a2a1a;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.5rem 1.75rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-current-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.card-current-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.card-current-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.tag.accent {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.card-current-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
