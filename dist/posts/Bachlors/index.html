@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Bachlor thesis — Portfolio</title><meta name="description" content="Cybersecurity portfolio and blog"><link rel="stylesheet" href="/_astro/Bachlors.D9v62cn9.css"></head> <body> <nav> <a href="/" class="nav-logo"><span class="accent">~/</span>Anton "BiZken" Olsson</a> <button class="nav-toggle" aria-label="Menu">☰</button> <ul class="nav-links"> <li> <a href="/"> Home </a> </li><li> <a href="/projects"> Projects </a> </li><li> <a href="/writeups"> Writeups </a> </li><li> <a href="/blog" aria-current="page"> Blog </a> </li><li> <a href="/certs"> Certs </a> </li> </ul> </nav> <script type="module">document.querySelector(".nav-toggle")?.addEventListener("click",()=>{document.querySelector(".nav-links")?.classList.toggle("open")});</script> <main>  <a href="/blog" class="back-link animate-in">← Back to blog</a> <article class="post-content"> <div class="animate-in"> <span class="label">blog</span> <h1 style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem;"> Bachlor thesis </h1> <div class="post-meta"> <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Threat Detection</span>  </div> </div> <h1 id="bachlors-thesis--machine-learning-threat-detection">Bachlors Thesis- machine learning threat detection</h1>
+<p><a href="https://www.diva-portal.org/smash/get/diva2:1979453/FULLTEXT01.pdf">Full Thesis Here</a></p>
+<p>Normal signature based threat detection is in the past, it comes with multiple cons:</p>
+<h3 id="cons">Cons</h3>
+<ul>
+<li>Take yesterdays attacks, signature based detections are based on known attributes</li>
+<li>Doesn’t see a pattern just an “event”</li>
+<li>Not Scalable, When a new attack has been identified a rule must be setup to detect it, leading to an overwhelming amount of work considering the threat landscape today.</li>
+</ul>
+<h3 id="pros-with-machine-learning-for-threat-detection">pros with machine learning for threat detection</h3>
+<ul>
+<li>Sees a pattern and not just an event.</li>
+<li>Scalable - a well-trained model can detect attacks that has not previously been seen if it has similarities with the training data.</li>
+</ul>
+<h1 id="dataset">Dataset</h1>
+<p>The CICIDS2017dataset was chosen, since this dataset is used for classification purposes of malicious network traffic. CICIDS2017 was created at the University of
+New Brunswick because they felt that there was a lack of updated datasets for
+intrusion detection. The generated traffic came from a topology with routers,
+switches, firewalls and operating systems such as windows and Mac OS X to
+simulate a “complete network”.</p>
+<h1 id="algorithms">Algorithms</h1>
+<p>All the algorithms were supervised meaning that the dataset contained both features and labels. The algorithms were chosen to have different attributes/features.</p>
+<h3 id="random-forest">Random Forest</h3>
+<ul>
+<li>Ensamble Method - consists of decision trees using bagging</li>
+<li>HyperParameters tested:
+<ul>
+<li>N-Estimators - number of trees:
+<ul>
+<li>2–200</li>
+</ul>
+</li>
+<li>Max_depth - how deep each tree can go:
+<ul>
+<li>1, 5, 10, 15, 20, 25</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="xgboost">XGBoost</h3>
+<ul>
+<li>
+<p>Ensable Method aswell but uses gradient boosting instead of bagging</p>
+</li>
+<li>
+<p>HyperParameters tested:</p>
+<ul>
+<li>N-Estimators:
+<ul>
+<li>2-200</li>
+</ul>
+</li>
+<li>Max_depth - how deep each tree can go:
+<ul>
+<li>1, 5, 10, 15, 20, 25</li>
+</ul>
+</li>
+<li>Learning Rate - how much each tree learns from previous trees mistake
+<ul>
+<li>0.1, 0.5, 1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="knn-k-nearest-neighbors">KNN (K-Nearest Neighbors)</h3>
+</li>
+<li>
+<p>Instance-based learning algorithm that predicts using nearby data points</p>
+</li>
+<li>
+<p>Hyperparameters tested:</p>
+<ul>
+<li>N-neighbors — how many nearby data points to check when making a prediction:
+<ul>
+<li>1–50</li>
+</ul>
+</li>
+<li>Metric — how the distance to nearby data points is calculated:
+<ul>
+<li>Manhattan, Minkowski</li>
+</ul>
+</li>
+<li>Algorithm — the method used to calculate the nearest data points:
+<ul>
+<li>Ball tree, Kd tree, Brute</li>
+</ul>
+</li>
+<li>Weights — how valuable the neighboring data points are
+<ul>
+<li>Uniform, Distance</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="linear-svc">Linear SVC</h3>
+<ul>
+<li>Linear Support Vector Classification model used for binary/multiclass classification</li>
+<li>Hyperparameters tested:
+<ul>
+<li>Penalty — type of regularization used to prevent overfitting:
+<ul>
+<li>L1, L2</li>
+</ul>
+</li>
+<li>C — controls margin size and strength of regularization:
+<ul>
+<li>0.0001, 0.001, 0.01, 0.1, 1, 10, 100</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="logistic-regression">Logistic Regression</h3>
+<ul>
+<li>Linear classification model that estimates class probabilities, uses sigmoid Function</li>
+<li>Hyperparameters tested:
+<ul>
+<li>C — controls the strength of regularization to prevent overfitting:
+<ul>
+<li>0.0001, 0.001, 0.01, 0.1, 1, 10, 100</li>
+</ul>
+</li>
+<li>Solver — optimization algorithm used to fit the model:
+<ul>
+<li>liblinear, lbfgs, saga, sag, newton-cg, newton-cholesky</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="methodology">Methodology</h1>
+<p><img  src="/_astro/BachlorMethodology.BHamwkAg_2m2uhU.webp" alt="Methodolgy Steps" title="Methodolgy Steps" loading="lazy" decoding="async" fetchpriority="auto" width="1124" height="1304"></p>
+<h1 id="results">Results</h1>
+<h3 id="why-not-accuracy">Why not Accuracy</h3>
+<p>Most previous work are using accuracy when determining which algorithm/model perfrmed the best, this works great when you have a balanced dataset but imbalanced it gives a false sense of performance. if you have 95% of normal traffic and 5% attack traffic you can have an accuracy of 95% but recall is 0% because you missed all of the minory class. Using accuracy with imbalanced datasets doesn’t work mathematiclly</p>
+<h3 id="precision">Precision</h3>
+<p>How many of the predictions were correct - given in percentage</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Precision</mtext><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{Precision} = \frac{TP}{TP + FP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">Precision</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<h3 id="recall">Recall</h3>
+<p>How Many of the Attacks did we catch, how many of the True Positives - gives in percentage</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Recall</mtext><mo>=</mo><mfrac><mrow><mi>T</mi><mi>P</mi></mrow><mrow><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{Recall} = \frac{TP}{TP + FN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Recall</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">FN</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<h3 id="f1-score">F1-score</h3>
+<p>Mean of both precision and recall, better than accuracy when you are using an imbalanced dataset. Given score on 0-1 range</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mn>1</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mfrac><mrow><mtext>Precision</mtext><mo>⋅</mo><mtext>Recall</mtext></mrow><mrow><mtext>Precision</mtext><mo>+</mo><mtext>Recall</mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.1408em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Precision</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Recall</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Precision</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Recall</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p><img  src="/_astro/BachlorResults.D12iffWg_Z1eNamc.webp" alt="Results" title="Results" loading="lazy" decoding="async" fetchpriority="auto" width="1054" height="678"></p> </article>  </main> <footer> <p>&copy; 2026 Anton "BiZken" Olsson &middot; Built with Astro</p> </footer> </body></html>

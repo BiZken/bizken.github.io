@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+---
+
+<Base title="Anton Olsson" current="/">
+
+  <!-- Hero -->
+  <section class="hero animate-in">
+    <span class="label">MSc Cybersecurity</span>
+    <h1>Anton <span class="accent">Olsson</span></h1>
+    <p>
+      Cybersecurity student exploring offensive security, network defence,
+      and everything in between. Documenting what I learn along the way.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/BiZken" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/antonolssonswe" target="_blank">LinkedIn</a>
+      <a href="mailto:anton.02.olsson.com">Email</a>
+      <a href="/cv_anton-olsson_SE.pdf" download>Resume ↓</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- About -->
+  <section class="animate-in">
+    <span class="label">About</span>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+      I'm currently pursuing a Master's in Cybersecurity at <strong>Univeristy west</strong> in trollhättan Sweden.
+      I enjoy CTFs in my spare time, being Top 2% on TryHackMe ATM and writing
+      about the techniques I learn.
+    </p>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-top: 1rem;">
+    </p>
+    <div class="iframe-wrap">
+      <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=3600949" style="border:none; width:100%;"></iframe>
+    </div>
+   <!-- <div class="skills-list" style="margin-top: 1.5rem;">
+      <span class="tag">Penetration Testing</span>
+      <span class="tag">Network Security</span>
+
+      <span class="tag">Python</span>
+      <span class="tag">Linux</span>
+      <span class="tag">Wireshark</span>
+      <span class="tag">Burp Suite</span>
+      <span class="tag">Routing/switching</span>
+      <span class="tag">Fortigate</span>
+      <span class="tag">ISO 27001</span>
+
+
+    </div> -->
+  </section>
+
+  <hr class="divider">
+
+  <!-- Recent -->
+  <section>
+    <span class="label">Recent</span>
+    <div class="card-grid">
+      <Card 
+        title="Autopsy - Disk Analysis and Autopsy"
+        description="A medium difficulty level on tryhackme about digital forensics of a windows machine"
+        href="/posts/autopsy"
+        accentTag="Writeup"
+        tags={["Forensics", "TryHackMe", "Autopsy"]}
+        />
+      <Card
+        title="Bachlor Thesis - machine learning Intrusion detection"
+        description="Vachlor Thesis comparing supervised machine learning algorithms for network intrusion detection."
+        href="/posts/Bachlors"
+        accentTag="Blog"
+        tags={["School", "Thesis", "Machine Learning"]}
+      />
+      <Card
+        title="PhishMailer"
+        description="A CLI tool that lets you create spearphishing emails."
+        href="/projects"
+        accentTag="project"
+        tags={["python", "phishing"]}
+      />
+
+    </div>
+  </section>
+
+</Base>

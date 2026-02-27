@@ -1,0 +1,33 @@
+---
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+import 'katex/dist/katex.min.css';
+
+interface Props {
+  title: string;
+  current?: string;
+}
+
+const { title, current = '/' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content="Cybersecurity portfolio and blog">
+</head>
+<body>
+  <Nav current={current} />
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <p>&copy; {new Date().getFullYear()} Anton "BiZken" Olsson &middot; Built with Astro</p>
+  </footer>
+</body>
+</html>

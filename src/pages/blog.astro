@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+
+// Auto-discover all blog posts
+const allPosts = await Astro.glob('./posts/*.md');
+const blogs = allPosts
+  .filter(p => p.frontmatter.type === 'blog')
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+
+<Base title="Blog — Portfolio" current="/blog">
+
+  <div class="page-header animate-in">
+    <span class="label">Blog</span>
+    <h1>Posts & thoughts</h1>
+    <p class="subtitle">Notes on what I'm learning, tools I'm using, and ideas I'm exploring in cybersecurity.</p>
+  </div>
+
+  <div class="card-grid">
+    {blogs.map(post => (
+      <Card
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        href={post.url!}
+        tags={post.frontmatter.tags}
+        date={post.frontmatter.date}
+      />
+    ))}
+
+    {blogs.length === 0 && (
+      <p style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem;">
+        No blog posts yet. Add a .md file in src/pages/posts/ with type: "blog".
+      </p>
+    )}
+  </div>
+
+</Base>

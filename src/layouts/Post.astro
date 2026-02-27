@@ -1,0 +1,27 @@
+---
+import Base from './Base.astro';
+
+const { frontmatter } = Astro.props;
+const { title, date, tags = [], type = 'blog', backLink = '/blog', backLabel = 'Back to blog' } = frontmatter;
+---
+
+<Base title={`${title} — Portfolio`} current={backLink}>
+
+  <a href={backLink} class="back-link animate-in">← {backLabel}</a>
+
+  <article class="post-content">
+    <div class="animate-in">
+      <span class="label">{type}</span>
+      <h1 style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem;">
+        {title}
+      </h1>
+      <div class="post-meta">
+        {tags.map((tag: string) => <span class="tag">{tag}</span>)}
+        {date && <span class="card-date">{date}</span>}
+      </div>
+    </div>
+
+    <slot />
+  </article>
+
+</Base>

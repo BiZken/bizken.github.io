@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+
+// Auto-discover all writeup posts
+const allPosts = await Astro.glob('./posts/*.md');
+//const allPosts = await Astro.glob('./posts/writeups.md');
+const writeups = allPosts
+  .filter(p => p.frontmatter.type === 'writeup')
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+
+<Base title="Writeups — Portfolio" current="/writeups">
+
+  <div class="page-header animate-in">
+    <span class="label">Writeups</span>
+    <h1>CTF & Security Writeups</h1>
+    <p class="subtitle">Walkthroughs and solutions from CTF challenges, HackTheBox, TryHackMe, and more.</p>
+  </div>
+
+  <div class="card-grid">
+    {writeups.map(post => (
+      <Card
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        href={post.url!}
+        accentTag={post.frontmatter.platform}
+        tags={post.frontmatter.tags}
+        date={post.frontmatter.date}
+      />
+    ))}
+
+    {writeups.length === 0 && (
+      <p style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem;">
+        No writeups yet. Add a .md file in src/pages/posts/ with type: "writeup".
+      </p>
+    )}
+  </div>
+
+</Base>

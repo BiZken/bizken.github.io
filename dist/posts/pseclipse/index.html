@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PS Eclipse — Portfolio</title><meta name="description" content="Cybersecurity portfolio and blog"><link rel="stylesheet" href="/_astro/Bachlors.D9v62cn9.css"></head> <body> <nav> <a href="/" class="nav-logo"><span class="accent">~/</span>Anton "BiZken" Olsson</a> <button class="nav-toggle" aria-label="Menu">☰</button> <ul class="nav-links"> <li> <a href="/"> Home </a> </li><li> <a href="/projects"> Projects </a> </li><li> <a href="/writeups" aria-current="page"> Writeups </a> </li><li> <a href="/blog"> Blog </a> </li><li> <a href="/certs"> Certs </a> </li> </ul> </nav> <script type="module">document.querySelector(".nav-toggle")?.addEventListener("click",()=>{document.querySelector(".nav-links")?.classList.toggle("open")});</script> <main>  <a href="/writeups" class="back-link animate-in">← Back to writeups</a> <article class="post-content"> <div class="animate-in"> <span class="label">writeup</span> <h1 style="font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem;"> PS Eclipse </h1> <div class="post-meta"> <span class="tag">Forensics</span><span class="tag">SOC</span><span class="tag">Windows</span><span class="tag">Splunk</span><span class="tag">Blue Team</span><span class="tag">SIEM</span> <span class="card-date">2026-02-25</span> </div> </div> <h2 id="overview">Overview</h2>
+<p><em><em>Splunk</em></em> one of the most common SIEM solutions out there and its for a reason Splunk is powerful — but the learning curve is real especially the search syntax, you can make it super detailed and trim thousends of logs down to just what you want or keep it simple and be left with a few and manually go through them.
+Let me be honest.</p>
+<p>I often fight with the search syntax.</p>
+<p>Splunk has that “it makes sense once you know it” energy. Until then, it feels like:</p>
+<ul>
+<li>
+<p>Why didn’t that filter work?</p>
+</li>
+<li>
+<p>Why is this returning 30,000 events?</p>
+</li>
+<li>
+<p>Why does adding one space break everything?</p>
+</li>
+</ul>
+<p>This room revolves around:</p>
+<ul>
+<li>
+<p>Windows event logs</p>
+</li>
+<li>
+<p>Sysmon telemetry</p>
+</li>
+<li>
+<p>PowerShell activity</p>
+</li>
+<li>
+<p>Suspicious executables</p>
+</li>
+<li>
+<p>Scheduled tasks and persistence</p>
+</li>
+<li>
+<p>Network connections to attacker infrastructure</p>
+</li>
+</ul>
+<h2 id="flags">Flags</h2>
+<p>First before starting digging through logs the time frame was set to 16th may 2022 when the incident occured. Looking through all the indexes there are a total of <em>17078</em> events.</p>
+<img src="/Pseclipse/Splunk.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-1">flag 1</h3>
+<p><em>A suspicious binary was downloaded to the endpoint. What was the name of the binary?</em></p>
+<p>First task was pretty easy I just searched for any file with the extension “.exe” and too make sure that it is only files created I specified “EventCode=11” which is the sysmon ID for “File Created”. Checking the top file names I found <em><em>OUTSTANDING_GUTTER.exe</em></em> in the \temp directory.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>index=* EventCode=11 TargetFilename"*.exe"</span></span></code></pre>
+<p><em><strong>ANSWER:</strong></em> OUTSTANDING_GUTTER.exe</p>
+<img src="/Pseclipse/1.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-2">flag 2</h3>
+<p><em>What is the address the binary was downloaded from? Add http:// to your answer &#x26; defang the URL.</em></p>
+<p>Knowing the name of the file its easy to see every event related to the malicious files, just adding the name in the searchbar.</p>
+<p>I started looking for different webpages that could have the file in the url for a download but that turned up fuck all. Realised then the name of the room and that it is about powershell so started to look out for powershell commands and found an base64 encoded powershell command tied to both the file aswell as the user. Also checked the first events as the download would occur early on.</p>
+<p>Getting the URL I just decoded it in the <a href="https://gchq.github.io/CyberChef/">CyberChef</a> with “From Base64” but also used #UTF-16LN# just to make it readable.</p>
+<p>After that I Defanged the URL for the Task.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>index=* OUTSTANDING_GUTTER.exe "DESKTOP-TBV8NEF\\keefan" | sort -_time desc</span></span></code></pre>
+<img src="/Pseclipse/2_2_2.png" alt="description" style="max-width: 500px; width: 100%;">
+<img src="/Pseclipse/2.png" alt="description" style="max-width: 500px; width: 100%;">
+<img src="/Pseclipse/2_2.png" alt="description" style="max-width: 500px; width: 100%;">
+<p><em><strong>ANSWER:</strong></em> hxxp[://]886e-181-215-214-32[.]ngrok[.]io</p>
+<h3 id="flag-3">flag 3</h3>
+<p><em>What Windows executable was used to download the suspicious binary? Enter full path.</em></p>
+<p>Going back to the Splunk event you can see the “Image” which means the application used for said event. Obvious its powershell</p>
+<p><em><strong>ANSWER:</strong></em> C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</p>
+<img src="/Pseclipse/3.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-4">flag 4</h3>
+<p><em>What command was executed to configure the suspicious binary to run with elevated privileges?</em></p>
+<p>For this you need to go back to the decoded powershell, I spent some time before I remembered that the command contained more than just the URL. Looking over the command again its using schedualed Tasks (schtasks) so for the search added the powershell path, user aswell as SCHTASKS:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>index="main" "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" User="DESKTOP-TBV8NEF\\keegan" SCHTASKS</span></span></code></pre>
+<p>Looking at the <em><em>CommandLine</em></em> there are 2 values, the first one shows the command for the configuration</p>
+<p><em><strong>ANSWER:</strong></em> “C:\Windows\system32\schtasks.exe” /Create /TN OUTSTANDING_GUTTER.exe /TR C:\Windows\Temp\COUTSTANDING_GUTTER.exe /SC ONEVENT /EC Application /MO *[System/EventID=777] /RU SYSTEM /f</p>
+<img src="/Pseclipse/4.png" alt="description" style="max-width: 500px; width: 100%;">
+<img src="/Pseclipse/4_answer.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-5">flag 5</h3>
+<p><em>What permissions will the suspicious binary run as? What was the command to run the binary with elevated privileges? (Format: User + ; + CommandLine)</em></p>
+<p>Looking at the command from the previous flag we se the <em><em>/RU SYSTEM</em></em> meaning the task will run as <em><em>NT AUTHORITY\SYSTEM</em></em>, this gives the executable full system access, therefor “elevated privileges”.</p>
+<p><em><strong>ANSWER:</strong></em> NT AUTHORITY\SYSTEM;“C:\Windows\system32\schtasks.exe” /Run /TN OUTSTANDING_GUTTER.exe</p>
+<img src="/Pseclipse/5.png" alt="description" style="max-width: 500px; width: 100%;">
+<img src="/Pseclipse/5_2.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-6">flag 6</h3>
+<p><em>The suspicious binary connected to a remote server. What address did it connect to? Add http:// to your answer &#x26; defang the URL.</em></p>
+<p>Again having the filename in search bar but checking all the DNS Queries to get the domains with showed 5 events, knowing ngrok is a tunneling service and it was the latest event I figured it was the correct URL.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>index="main" OUTSTANDING_GUTTER.exe QueryName="*"</span></span></code></pre>
+<p><em><strong>ANSWER:</strong></em> hxxp[://]9030-181-215-214-32[.]ngrok[.]io</p>
+<img src="/Pseclipse/6.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-7">flag 7</h3>
+<p><em>A PowerShell script was downloaded to the same location as the suspicious binary. What was the name of the file?</em></p>
+<p>A powershell script was downloaded to the same directory as the malicious exe file meaning its in the \Temp directory so all needed to do was to search the \Temp directory for any powershell file (ps1 extension).</p>
+<p>There were som policy scripts from what I assume microsoft but they usually don’t send out scripts called <em>script.ps1</em></p>
+<p><em><strong>ANSWER:</strong></em> script.ps1</p>
+<img src="/Pseclipse/8.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-8">flag 8</h3>
+<p><em>The malicious script was flagged as malicious. What do you think was the actual name of the malicious script?</em></p>
+<p>All files have a checksum usually used for integrity checks but you can also identify malicious files from known checksums of malicious files. Being on the same search as the previous question you can get the checksum of the <em>script.ps1</em> file. Looking at virustotal you can search checksums to see if they are previously known for being malicious. Results from virus total <a href="https://www.virustotal.com/gui/file/e5429f2e44990b3d4e249c566fbf19741e671c0e40b809f87248d9ec9114bef9">Here</a></p>
+<p>The Virustotal database identified the powershell script to be the <em>Blacksun</em> ransomware</p>
+<p><em><strong>ANSWER:</strong></em> BlackSun.ps1</p>
+<img src="/Pseclipse/8_2.png" alt="description" style="max-width: 500px; width: 100%;">
+<img src="/Pseclipse/8_answer.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-9">flag 9</h3>
+<p><em>A ransomware note was saved to disk, which can serve as an IOC. What is the full path to which the ransom note was saved?</em></p>
+<p>Going with the same approach as previous when it came to created file I used the <em>EventCode 11</em>. Since it is a note i assumed it is a txt file so I searched all files but the events had to have “txt” in them. I also decided to try “Statistics” using “table” and it gave alot better view. Good to now for the future.</p>
+<p>I found a Blacksun textfile in the users Downloads directory.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>index=main EventCode=11 txt TargetFilename="*"</span></span>
+<span class="line"><span>| table TargetFilename</span></span></code></pre>
+<p><em><strong>ANSWER:</strong></em> C:\Users\keegan\Downloads\vasg6b0wmw029hd\BlackSun_README.txt</p>
+<img src="/Pseclipse/9.png" alt="description" style="max-width: 500px; width: 100%;">
+<h3 id="flag-10">flag 10</h3>
+<p><em>The script saved an image file to disk to replace the user’s desktop wallpaper, which can also serve as an IOC. What is the full path of the image?</em></p>
+<p>Used the same approach as for flag 9 but instead of “txt” I tried picture extensions, “png” showed nothing but with “jpg” it showed a “blacksun.jpg”</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>index=main EventCode=11 jpg TargetFilename="*"</span></span>
+<span class="line"><span>| table TargetFilename</span></span></code></pre>
+<p><em><strong>ANSWER:</strong></em> C:\Users\Public\Pictures\blacksun.jpg</p>
+<img src="/Pseclipse/10.png" alt="description" style="max-width: 500px; width: 100%;">
+<h2 id="conclusion">Conclusion</h2>
+<p>This room reinforces something important: real-world security investigations aren’t cinematic. They’re methodical. They’re log-heavy. They require patience. And they reward persistence.
+One thing PS Eclipse really drove home for me is just how powerful Splunk’s search engine actually is.</p>
+<p>At first glance, it feels like a simple search bar and you can use it for it. Type something in, hit enter, get results but it can also super advanced and specific. So you can start broad and then narrow it down, but;</p>
+<ul>
+<li>
+<p>Yes, the syntax can be frustrating.</p>
+</li>
+<li>
+<p>Yes, missing a field name can derail you.</p>
+</li>
+<li>
+<p>Yes, one misplaced filter can return thousands of useless events.</p>
+</li>
+</ul>
+<p>But it doesn’t take long until you finaly understand the basics of how to structure your searches properly, it becomes incredibly efficient.</p>
+<p><em><strong>I’ll be honest — I don’t feel “fluent” in Splunk yet.</strong></em></p>
+<p>The search syntax still trips me up sometimes. I still occasionally return way too many results. I still have moments where I know what I want to find, but I struggle to translate that into the correct query.</p>
+<p>But that’s exactly why this is something I will definitely keep working on in the future.</p>
+<p>Because the more I use it, the more I see how powerful it really is.</p> </article>  </main> <footer> <p>&copy; 2026 Anton "BiZken" Olsson &middot; Built with Astro</p> </footer> </body></html>
