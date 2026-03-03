@@ -85,197 +85,744 @@ import Card from '../components/Card.astro';
   <hr class="divider">
 
     <!-- Courses -->
-    <hr class="divider">
-
     <!-- Coursework -->
     <section>
       <span class="label">Coursework — University West</span>
       <div class="card-grid">
         <div class="card" style="cursor: default; overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+          <table id="course-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
             <thead>
               <tr style="border-bottom: 1px solid var(--border-subtle); text-align: left;">
-                <th style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;">COURSES Year 1-3</th>
+                <th style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em; width: 1.5rem;"></th>
+                <th style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;">COURSES YEAR 1-3</th>
                 <th style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; text-align: center; letter-spacing: 0.05em;">CREDITS</th>
                 <th style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; text-align: right; letter-spacing: 0.05em;">GRADE</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem; transition: transform 0.2s;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Fundamentals in computer engineering and programming</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe a computer system's function and its components (processor, memory, motherboard, buses, storage, expansion cards)<br>
+                  · Explain how a computer works from OS boot to running programs<br>
+                  · Describe how different programming languages produce executable programs (compiled vs. scripted)<br>
+                  · Describe common programming constructs: control structures, data types, variables, methods, functions<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Assemble a PC from modular components and connect peripherals with drivers<br>
+                  · Install, configure, and administer a Windows operating system<br>
+                  · Perform a performance study and use spreadsheet software to compile results and charts<br>
+                  · Present results in a written report<br>
+                  · Construct simple Python programs from a given task description<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Recognise the need for security awareness in all work with computers and computer systems
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Fundamentals of Network and Internet Technology</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">VG</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe and explain the OSI model<br>
+                  · Describe and explain the function of protocols in the TCP/IP suite<br>
+                  · Account for IP addressing and subnet calculation for IPv4 and IPv6<br>
+                  · Describe the structure of Cisco IOS<br>
+                  · Perform IP calculations using VLSM and CIDR<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Configure an end station with IP addresses for local network access<br>
+                  · Configure routers and switches with IP addresses for different network types<br>
+                  · Calculate subnets and subnet masks<br>
+                  · Configure devices with Cisco IOS<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Assess the need for a holistic view and problem-solving methodology<br>
+                  · Approach emerging problems and apply structured problem-solving methods
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Routing, switching, and wireless networks essentials</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">VG</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe and account for fundamental switching concepts such as VLANs, trunking, Spanning Tree Protocol (STP), EtherChannels, and LAN security<br>
+                  · Describe and account for wireless technologies<br>
+                  · Describe the purpose and function of a router, routing table, and inter-VLAN routing<br>
+                  · Demonstrate basic knowledge of static routing and dynamic routing protocols such as RIP/RIPng for IPv4 and IPv6<br>
+                  · Account for fundamental routing protocol theory and functions such as First Hop Redundancy Protocols (FHRPs) and DHCP for IPv4 and IPv6<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Configure and verify static routing and inter-VLAN routing<br>
+                  · Configure and verify dynamic routing for IPv4 and IPv6<br>
+                  · Configure and verify First Hop Redundancy Protocols (FHRPs)<br>
+                  · Configure and verify VLANs, EtherChannels, and LAN security<br>
+                  · Configure and verify DHCP<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Assess the need for a holistic view and problem-solving methodology<br>
+                  · Approach emerging problems and apply structured problem-solving methods
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Cyber Security</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">VG</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe the role of a cybersecurity analyst within industry<br>
+                  · Describe differences and advantages of various operating systems (Windows, Linux) from a security perspective<br>
+                  · Describe the challenges of encryption in the context of data interception<br>
+                  · Describe how incidents are handled by Computer Security Incident Response Teams (CSIRTs)<br>
+                  · Account for different types of cybersecurity attacks and their classifications<br>
+                  · Describe how to investigate endpoint vulnerabilities and attacks<br>
+                  · Evaluate different types of alert messages<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Classify different types of cybersecurity attacks<br>
+                  · Apply methods to prevent malicious access to networks, data, and users<br>
+                  · Analyse data communication intrusions and identify network vulnerabilities<br>
+                  · Use monitoring tools to identify different types of data communication attacks
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Internet Infrastructure Applications</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">4</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Foundational knowledge of the Internet and the applications that provide infrastructure for large-scale internet services<br>
+                  · Foundational knowledge of common internet services: DNS, electronic mail, web servers, logging services, as well as insights into security and cloud computing<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Remotely manage a Linux server<br>
+                  · Install, configure, functionally test, operate, and troubleshoot internet services such as DNS, email, web servers, SNMP, logging services, and other core services<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Understand the need to balance availability, security, and cost, and relate this to the client's requirements
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Operating Systems with GNU/Linux</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">4</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe the fundamental purpose of an operating system<br>
+                  · Reason about different OS architectures and account for underlying principles and theories<br>
+                  · Demonstrate knowledge of process and memory management, locks, file systems, and resource management<br>
+                  · Account for OS concepts such as virtualisation and bootstrapping<br>
+                  · Account for security issues in multi-user systems and common methods to address them<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Install, upgrade, and perform basic configuration of GNU/Linux systems<br>
+                  · Use common shell commands and write basic shell scripts<br>
+                  · Use an operating system's programming interface for process, memory, file system, and resource management<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Appreciate the value of using — or not using — an operating system
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Management and security in global networks</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">VG</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe different types of network architectures<br>
+                  · Describe and account for WAN technologies and security using VPN tunnels<br>
+                  · Describe and account for dynamic routing protocols such as Single-area OSPF and EIGRP<br>
+                  · Demonstrate understanding of routing in IPv4 and IPv6 based networks<br>
+                  · Account for the function and properties of NAT, ACLs, Network Management, and QoS<br>
+                  · Demonstrate a basic understanding of network automation<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Configure and troubleshoot dynamic routing protocols in IPv4 and IPv6 networks<br>
+                  · Configure access control (ACL)<br>
+                  · Configure Network Address Translation (NAT)<br>
+                  · Configure synchronisation and monitoring tools<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Assess the need for a holistic view and problem-solving methodology<br>
+                  · Approach emerging problems and apply structured problem-solving methods
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Introduction to programming with Python</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">VG</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Select appropriate data types for storing the data to be handled<br>
+                  · Use control structures for selection and iteration<br>
+                  · Structure programs using functions and modules<br>
+                  · Use error handling as a tool for controlling program flow<br>
+                  · Use existing functions, both built-in and external<br>
+                  · Solve problems using basic Python programs<br>
+                  · Structure code in a way that facilitates maintenance<br>
+                  · Implement basic algorithms from pseudocode
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Advanced routing and switching - CCNP 1</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Explain and describe internal and external routing protocols such as EIGRP, multi-area OSPF, and BGP<br>
+                  · Describe standard architectures for larger organisations' networks (Network Enterprise Architecture)<br>
+                  · Describe common approaches to building wireless networks for larger organisations<br>
+                  · Describe fundamental switching for both IP and Ethernet (multilayer switching) and common Layer 2 technologies such as STP, VLANs, trunking, VTP, EtherChannels, and FHRP<br>
+                  · Explain how multicast works<br>
+                  · Describe different solutions and techniques for QoS and overlay tunnels<br>
+                  · Explain the principles behind Software Defined Networking (SDN) and VXLAN<br>
+                  · Explain how scripts can be used for configuration and automation<br>
+                  · Describe protocols and services for network automation (SNMP, Syslog, NetFlow, IP SLA, RESTCONF)<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Configure routing technologies such as Interior Gateway Protocols and IPv6<br>
+                  · Optimise routing through route filtering and passive interfaces<br>
+                  · Implement routing between external networks and autonomous systems using BGP<br>
+                  · Configure multilayer switch technologies<br>
+                  · Configure First Hop Redundancy Protocols in switched networks<br>
+                  · Configure monitoring services and use protocols and tools for network administration
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Network Security</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Demonstrate knowledge and understanding of zone-based security architectures<br>
+                  · Demonstrate understanding of different VPN technologies and their areas of application<br>
+                  · Basic understanding of the difference between IPS and IDS<br>
+                  · Account for differences between software-based and hardware-based network security devices<br>
+                  · Basic knowledge of security policies and security analyses<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Plan, design, implement, and maintain secure computer networks<br>
+                  · Configure ASA devices and routers to act as perimeter protection for a network<br>
+                  · Implement various access control services<br>
+                  · Configure port-based authentication at Layer 2<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Recognise that network security requires viewing the use of computers and networks within an organisation from a holistic perspective<br>
+                  · Recognise that access to information and resources must be restricted to achieve a secure network
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Firewall techniques</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">VG</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Account for fundamental firewall theories such as IDS and IPS<br>
+                  · Deep understanding of access lists and NAT<br>
+                  · Understanding of VPN types: Site-to-Site, Remote Access, and Clientless SSL<br>
+                  · Understanding of the need for different types of security zones and adaptive security methods<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Proficient in configuring firewalls with intrusion detection<br>
+                  · Highly proficient in configuring hardware firewalls via CLI and GUI<br>
+                  · Configure NAT and PAT<br>
+                  · Proficient in configuring access lists<br>
+                  · Highly proficient in managing Cisco operating systems and dedicated firewalls<br>
+                  · Manage and configure VPNs using both pre-shared keys and digital certificates<br>
+                  · Proficient in creating secure solutions for remote management of computer systems<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Acutely aware of the need for perimeter protection for a company or organisation<br>
+                  · Acutely aware of how different techniques can create, secure, and manage local and virtual private networks<br>
+                  · Aware of the consequences different security techniques have on a company or organisation
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Advanced infrastructure and services - CCNP 2</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Advanced knowledge of internal routing protocols (IGP) such as EIGRP and multi-area OSPF<br>
+                  · Advanced knowledge of routing between large networks and autonomous systems using BGP<br>
+                  · Knowledge of routing optimisation through route filtering, passive interfaces, and redistribution between routing protocols<br>
+                  · Knowledge of VRF-lite and Multiprotocol Label Switching (MPLS)<br>
+                  · Knowledge of GRE and DMVPN tunnels<br>
+                  · Knowledge of IP SLA and NetFlow<br>
+                  · Knowledge of troubleshooting in complex networks<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Configure and troubleshoot advanced router technologies such as Interior and Exterior Gateway Protocols for IPv4 and IPv6<br>
+                  · Configure and optimise routing through route filtering, passive interfaces, and redistribution between routing protocols<br>
+                  · Implement routing between large networks and autonomous systems using BGP<br>
+                  · Implement and verify tunnel technologies
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Advanced Firewall Technology for Cybersecurity</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Account for the most common functions in application firewalls<br>
+                  · Demonstrate knowledge of firewall policies, user authentication, and how a network is protected using security profiles such as IPS, antivirus, web filtering, and application control<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Implement basic network security<br>
+                  · Control network access to configured networks using firewall policies<br>
+                  · Apply port forwarding, source NAT, and destination NAT<br>
+                  · Authenticate users using firewall policies<br>
+                  · Configure SSL/TLS traffic inspection to prevent encryption from bypassing security policies<br>
+                  · Configure security profiles to neutralise threats and misuse, including viruses, torrents, and inappropriate websites<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Recognise the need for security awareness in all work with computers and computer systems
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Thesis Work in Network Technology</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding / Skills & abilities</b><br>
+                  · Demonstrate knowledge and proficiency in problem-solving within computer engineering and independently identify problems and solutions<br>
+                  · Apply a methodical approach, independently identify and review necessary literature, and use it to formulate answers to research questions<br>
+                  · Demonstrate the ability to analyse results<br>
+                  · Present all parts and aspects of the thesis both orally and in clear written form to different audiences
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Wireless Networks</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Understand concepts and standards within wireless networks, particularly the 802.11 standard<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Connect to and use different types of wireless networks<br>
+                  · Design and configure different types of wireless networks<br>
+                  · Test and troubleshoot simple wireless networks<br>
+                  · Set up basic security in wireless networks<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Appreciate the special properties of wireless networks and how they affect design and usage<br>
+                  · Appreciate the special security problems that arise when using wireless networks
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Industrial Economics for Technicians</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">4.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">VG</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Demonstrate knowledge and understanding of a company's various business processes<br>
+                  · Account for fundamental business economics concepts and models<br>
+                  · Demonstrate knowledge and understanding of what contributes to a company's profitability<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Create a cost estimate for investments<br>
+                  · Apply selected calculation models for goods, services, and investments<br>
+                  · Use spreadsheet software for calculating costs and investments<br>
+                  · Present an economic decision basis in writing and orally
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Virtual servers and storage systems</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">5</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Structure and function of virtual machines and orientation on current research in server virtualisation<br>
+                  · Storage systems with focus on SAN and iSCSI<br>
+                  · Applicable methods for managing, maintaining, and administering virtual environments<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Select the appropriate virtualisation model based on requirements and realise it in a production environment<br>
+                  · Solve relevant server virtualisation problems within given timeframes
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Advanced Topics in Computer Engineering</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">5</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Demonstrate knowledge of the scientific foundations of computer engineering<br>
+                  · Demonstrate knowledge of current research areas within computer engineering<br>
+                  · Demonstrate advanced knowledge within some area of computer engineering<br>
+                  · Demonstrate knowledge of applicable methods within computer engineering<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Present and discuss information, problems, and solutions in dialogue with different groups<br>
+                  · Evaluate and critically interpret relevant information in a computer engineering problem<br>
+                  · Critically discuss phenomena, issues, and situations within computer engineering<br>
+                  · Perform basic simulations of a computer engineering nature<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Demonstrate the ability to make assessments with regard to relevant scientific, societal, and ethical aspects
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Computer engineering in practice</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">4</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Motivate and explain how small-scale development or research projects in computer engineering should be organised<br>
+                  · Describe common development processes and how a project is taken from start to finish<br>
+                  · Reflect on connections between practical project work and supporting theoretical literature<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Create and present a convincing project proposal based on an internal or external problem statement<br>
+                  · Plan, execute, organise, verify, and complete a practical project<br>
+                  · Present, demonstrate, or document achieved results in a clear and well-motivated manner<br>
+                  · Justify chosen methods and approaches against other alternatives and related work in the field<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Understand that development or research projects require planning to achieve high quality within a given timeframe<br>
+                  · Demonstrate insight into the validity and generalisability of achieved results
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Sustainable development</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">3.0</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">G</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Demonstrate knowledge of the concept of sustainable development from ecological, social, and economic perspectives<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Apply acquired knowledge of sustainable development<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Reflect on the professional role as a technician or engineer regarding its significance for sustainable development<br>
+                  · Reflect on one's own positions and standpoints
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Server administration</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">5</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Demonstrate knowledge of the structure and function of distributed directory services such as Active Directory<br>
+                  · Explain and describe methods and techniques for designing and optimising server systems for high availability, distribution, and performance<br>
+                  · Familiarity with current research on server infrastructure within the data centre domain<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Install server and network systems along with associated administrative tools<br>
+                  · Upgrade and perform advanced configuration of directory services, DNS, and storage systems<br>
+                  · Automate routine tasks using PowerShell<br>
+                  · Configure, administer, and troubleshoot replication, redundancy, and dynamic access control for server services<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Recognise that documentation is an important part of administering server and network systems
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Introduction to discrete mathematics</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">2.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">5</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding / Skills & abilities</b><br>
+                  · Demonstrate basic knowledge and skills in rational expressions and polynomials<br>
+                  · Demonstrate basic knowledge and skills in exponential functions and logarithms<br>
+                  · Demonstrate basic knowledge and skills in the equation of a straight line<br>
+                  · Demonstrate basic knowledge and skills in linear systems of equations<br>
+                  · Demonstrate introductory knowledge of matrices
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Advanced Cyber and IoT Security</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">4</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe cryptographic concepts and how they are used in industry<br>
+                  · Account for the Secure Development Lifecycle (SDLC), its models and frameworks<br>
+                  · Account for security threats within industrial and automotive domains<br>
+                  · Explain the Threat Assessment and Remediation Analysis (TARA) method<br>
+                  · Account for relevant cybersecurity standards for web, IoT, and industrial applications<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Analyse data traffic and use relevant tools for security testing and monitoring<br>
+                  · Perform security analysis of industrial systems<br>
+                  · Manage data security for the entire lifecycle when developing IoT applications and cloud services<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Make assessments with regard to relevant cybersecurity aspects
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Discrete Mathematics</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">5.0</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">5</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding / Skills & abilities</b><br>
+                  · Demonstrate basic knowledge and skills in matrix algebra and matrix transformations<br>
+                  · Demonstrate basic knowledge and skills in number bases and modular arithmetic (number theory)<br>
+                  · Demonstrate basic skills and insights in coding theory<br>
+                  · Demonstrate basic knowledge and skills in propositional logic and algorithms<br>
+                  · Translate knowledge of linear binary error-correcting codes into algorithms and apply them to computer science applications<br>
+                  · Demonstrate basic knowledge and insight in graph theory and network problems
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Degree project computer engineering</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">15.0</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">4</td>
               </tr>
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Demonstrate knowledge and understanding within the technical field, including its scientific foundations<br>
+                  · Demonstrate knowledge of applicable methods and proven experience, advanced knowledge in some part of the field, and familiarity with current R&D work<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Independently and creatively identify, formulate, and solve problems using adequate methods within given constraints<br>
+                  · Search, collect, evaluate, and critically interpret relevant information, and critically discuss phenomena, issues, and situations<br>
+                  · Design and evaluate products, processes, and systems with regard to sustainable development (economic, social, ecological)<br>
+                  · Present and discuss information, problems, and solutions orally and in writing with different audiences<br>
+                  · Demonstrate skills required to work independently within the field<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Make assessments with regard to relevant scientific, societal, and ethical aspects<br>
+                  · Identify the need for further knowledge and continuously develop one's competence
+                </td>
+              </tr>
               <thead>
               <tr style="border-bottom: 1px solid var(--border-subtle); text-align: left;">
-                <th style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;">COURSES Msc Cyber Security</th>
+                <th style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em; width: 1.5rem;"></th>
+                <th style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;">COURSES MASTERS CYBER SECURITY</th>
                 <th style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; text-align: center; letter-spacing: 0.05em;">CREDITS</th>
                 <th style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; text-align: right; letter-spacing: 0.05em;">GRADE</th>
               </tr>
             </thead>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Principles of cybersecurity</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">C</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe concepts and terminology for cybersecurity<br>
+                  · Describe the phases of cybersecurity operations<br>
+                  · Explain common cybersecurity threats to networks and endpoints<br>
+                  · Describe the key client and server systems and their weaknesses<br>
+                  · Explain key technical preventive measures such as access control, cryptography, network security, firewalls, monitoring, and patching<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Classify different types of cybersecurity attacks<br>
+                  · Apply methods to counter malicious access to networks, data, and users<br>
+                  · Analyse data communication intrusions and identify network vulnerabilities<br>
+                  · Use monitoring tools to identify different types of data communication attacks<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Demonstrate insight into the impact that cyber threats can have on society
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Cyber-physical Systems Security</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">C</td>
               </tr>
-              <tr style="border-bottom: 1px solid var(--border-subtle);">
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Describe different types of cyber-physical systems and their areas of application<br>
+                  · Explain general security architecture principles<br>
+                  · Identify vulnerabilities, threats, and attacks affecting cyber-physical systems, and select appropriate countermeasures<br>
+                  · Explain protocols and standards used in cyber-physical security<br>
+                  · Understand variation between cyber-physical security solutions when applied to different system types<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Distinguish between physical, logical, and organisational security<br>
+                  · Select appropriate tools and methods to counter cyber-physical security threats<br>
+                  · Integrate current developments in the field of cyber-physical security into existing systems<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Understand the impact that cyber-physical systems have on society<br>
+                  · Demonstrate understanding of the need for personal responsibility as a cybersecurity expert in mitigating cyber threats
+                </td>
+              </tr>
+
+              <tr class="course-row" style="border-bottom: 1px solid var(--border-subtle); cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Privacy, law, policy, and compliance in cybersecurity</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">C</td>
               </tr>
-              <tr>
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Recognise and explain key legal aspects of data privacy and cybersecurity for private organisations and government agencies<br>
+                  · Identify and interpret the concept of cybersecurity policy and understand its role within an organisation<br>
+                  · Demonstrate understanding of the main differences between industrial standards, international standards, national standards, regulatory directives, laws, and national legislation<br>
+                  · Explain why laws and regulations are important to follow as a key step in preventing data leaks and cyber incidents<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Propose effective mechanisms to respond to real or perceived cybersecurity risks such as ransomware and social engineering<br>
+                  · Discuss and argue compliance and legal issues that may arise when introducing changes in technical solutions or services to other national markets<br>
+                  · Interpret cybersecurity policy outcomes<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Critically reflect on social and ethical aspects related to privacy<br>
+                  · Take responsibility for one's own knowledge development
+                </td>
+              </tr>
+
+              <tr class="course-row" style="cursor: pointer;">
+                <td class="chevron" style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-muted); font-size: 0.7rem;">▸</td>
                 <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Cloud security</td>
                 <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
                 <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">A</td>
               </tr>
-              <tr>
-                <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">AI-based risk assessment and management</td>
-                <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
-                <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">In Progress</td>
+              <tr class="course-detail" style="display: none;">
+                <td></td>
+                <td colspan="3" style="padding: 0.5rem 0.5rem 1rem 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.6;">
+                  <b style="color: var(--text-secondary);">Knowledge & understanding</b><br>
+                  · Explain the fundamentals of cloud computing architectures based on current standards, protocols, and best practices<br>
+                  · Describe cybersecurity threats, vulnerabilities, and privacy issues for cloud systems<br>
+                  · Explain network and infrastructure security principles for cloud systems<br>
+                  · Describe how cloud security differs from security in traditional IT systems<br>
+                  · Explain the differences between common scientific methods<br>
+                  · Describe principles of experimental design and measurement methodology<br><br>
+                  <b style="color: var(--text-secondary);">Skills & abilities</b><br>
+                  · Install and configure identity and authentication services<br>
+                  · Identify, manage, and protect cloud data and assets<br>
+                  · Use methods and tools to identify and mitigate vulnerabilities in cloud systems<br>
+                  · Independently identify, formulate, and carry out a scientific study<br>
+                  · Select, evaluate, and apply appropriate research methods given a scientific problem<br>
+                  · Present and discuss information, problems, and solutions orally and in writing<br><br>
+                  <b style="color: var(--text-secondary);">Judgement & approach</b><br>
+                  · Recognise that logging and monitoring are important tools<br>
+                  · Make assessments with regard to relevant scientific, societal, and ethical aspects
+                </td>
               </tr>
-              <tr>
-                <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Masters of Science Thesis</td>
-                <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">15.0</td>
-                <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">In Progess</td>
-              </tr>
-              <tr>
-                <td style="padding: 0.6rem 0.5rem 0.6rem 0; color: var(--text-secondary);">Ethical hacking, penetration testing and It forensics</td>
-                <td style="padding: 0.6rem 0.5rem; color: var(--text-muted); font-family: var(--font-mono); text-align: center;">7.5</td>
-                <td style="padding: 0.6rem 0 0.6rem 0.5rem; color: var(--accent); font-family: var(--font-mono); text-align: right;">Upcoming</td>
-              </tr>
+
             </tbody>
           </table>
           <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
-            <span>Total: 210.0 hp (ECTS)</span>
+            <span>Total: 210.0 hp (240.0 hp at graduation)</span>
             <span>University West</span>
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+      document.querySelectorAll('.course-row').forEach(row => {
+        row.addEventListener('click', () => {
+          const detail = row.nextElementSibling;
+          const chevron = row.querySelector('.chevron');
+          if (detail && detail.classList.contains('course-detail')) {
+            const isOpen = detail.style.display === 'table-row';
+            detail.style.display = isOpen ? 'none' : 'table-row';
+            chevron.textContent = isOpen ? '▸' : '▾';
+            chevron.style.color = isOpen ? 'var(--text-muted)' : 'var(--accent)';
+          }
+        });
+
+        row.addEventListener('mouseenter', () => {
+          row.style.background = 'var(--bg-card-hover)';
+        });
+        row.addEventListener('mouseleave', () => {
+          row.style.background = 'transparent';
+        });
+      });
+    </script>
 
 </Base>
