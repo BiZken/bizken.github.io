@@ -48,6 +48,19 @@
   --tag-bg:        #e8e8f0;
   --tag-text:      #555570;
   --bg-card-current: #e0f5ed;
+
+[data-theme="light"] .post-content pre {
+  background: #e2e2ec;
+}
+
+[data-theme="light"] .post-content pre code {
+  color: #2a2a3e;
+}
+
+[data-theme="light"] .post-content code {
+  background: #e2e2ec;
+  color: #0a7a60;
+}
 }
 
 [data-theme="light"] body::before {
@@ -537,4 +550,18 @@ footer {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-muted);
+}
+
+.post-content pre {
+  background: #1a1a28;
+  border: 1px solid var(--border);
+}
+
+.post-content pre code {
+  color: #c8c8d8;
+}
+
+.post-content code {
+  color: var(--accent);
+  background: #1a1a28;
 }

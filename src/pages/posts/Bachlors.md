@@ -85,8 +85,9 @@ All the algorithms were supervised meaning that the dataset contained both featu
 
 
 # Methodology
+<img src="/bachlors/BachlorMethodology.png" alt="Methodology" style="max-width: 500px; width: 100%;">
 
-![Methodolgy Steps](./images/BachlorMethodology.png "Methodolgy Steps")
+
 
 
 # Results
@@ -113,4 +114,5 @@ $$
 F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
 $$
 
-![Results](./images/BachlorResults.png "Results")
+<img src="/bachlors/BachlorResults.png" alt="BachResult" style="max-width: 500px; width: 100%;">
+
