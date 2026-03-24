@@ -1,0 +1,244 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+---
+
+<Base title="About Me">
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-intro">
+        <h1>About Me</h1>
+        <p class="tagline">Cybersecurity student &amp; aspiring security professional based in Sweden.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Who I Am</h2>
+        <p>
+          I'm Anton — a cybersecurity student at <strong>University West</strong> (Högskolan Väst) in Trollhättan, Sweden.
+          I'm currently pursuing my <strong>MSc in Cybersecurity</strong>, building on a strong foundation in
+          networking, systems administration, and security operations from my undergraduate studies.
+        </p>
+        <p>
+          My interest in cybersecurity started with wanting to understand how systems work — and from there,
+          how they break. That curiosity drives me to dig into everything from firewall configurations and
+          network security to cloud security and threat analysis.
+        </p>
+
+        <h2>What I'm Focused On</h2>
+        <p>
+          Right now I'm sharpening my skills through CTF challenges, security labs, and hands-on
+          coursework that spans topics like cloud security, cyber-physical systems, and security policy &amp; compliance.
+          I document my journey through writeups and projects on this site.
+        </p>
+        <p>
+          Outside of academics, I enjoy exploring new tools and techniques, contributing to my
+          home lab setup, and staying current with the evolving threat landscape.
+        </p>
+
+        <h2>What I Bring</h2>
+        <p>
+          My background combines deep networking knowledge — from Cisco routing &amp; switching
+          up through CCNP-level infrastructure — with a growing specialization in cybersecurity
+          operations, IoT security, and cloud environments. I'm comfortable working across
+          both Windows and Linux systems, and I value a methodical, detail-oriented approach
+          to problem-solving.
+        </p>
+      </div>
+
+      <aside class="about-sidebar">
+        <div class="sidebar-card">
+          <h3>Quick Facts</h3>
+          <ul class="facts-list">
+            <li>
+              <span class="fact-label">Location</span>
+              <span class="fact-value">Sweden</span>
+            </li>
+            <li>
+              <span class="fact-label">Education</span>
+              <span class="fact-value">MSc Cybersecurity, University West</span>
+            </li>
+            <li>
+              <span class="fact-label">Focus Areas</span>
+              <span class="fact-value">Network Security, Cloud Security, CPS/IoT</span>
+            </li>
+            <li>
+              <span class="fact-label">Platforms</span>
+              <span class="fact-value">Linux, Windows, Cisco IOS</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Connect</h3>
+          <ul class="connect-list">
+            <li>
+              <a href="https://github.com/BiZken" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/antonolssonswe" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .about-hero {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border, rgba(128, 128, 128, 0.2));
+    margin-bottom: 2.5rem;
+  }
+
+  .about-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .about-intro h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 1.15rem;
+    color: var(--text-muted, #888);
+    margin: 0;
+  }
+
+  /* ── Content Grid ── */
+  .about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* ── Main Text ── */
+  .about-text h2 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-text h2:first-child {
+    margin-top: 0;
+  }
+
+  .about-text p {
+    line-height: 1.7;
+    color: var(--text-secondary, #ccc);
+    margin-bottom: 1rem;
+  }
+
+  .about-text strong {
+    color: var(--text-primary, #fff);
+  }
+
+  /* ── Sidebar ── */
+  .sidebar-card {
+    background: var(--card-bg, rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--border, rgba(128, 128, 128, 0.2));
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sidebar-card h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted, #888);
+    margin-bottom: 1rem;
+  }
+
+  .facts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .facts-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .fact-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted, #888);
+  }
+
+  .fact-value {
+    font-size: 0.92rem;
+    color: var(--text-secondary, #ccc);
+  }
+
+  /* ── Connect Links ── */
+  .connect-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .connect-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary, #ccc);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.2s ease;
+  }
+
+  .connect-list a:hover {
+    color: var(--text-primary, #fff);
+  }
+
+  .connect-list svg {
+    flex-shrink: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 720px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-sidebar {
+      order: -1;
+    }
+
+    .about-intro h1 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
