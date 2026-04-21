@@ -10,12 +10,12 @@ backLabel: Back to posts
 ---
 
 ## Background
-So we had the first lab of our last course and it started by all students got an email with credentials for our own accounts, a pre configured 12 character password. Probably for the best since most student has the combined IQ of a pencil sharpener.
+So we had the first lab of our last course and it started with all students getting an email with credentials for our own accounts, a pre configured 12 character password. Probably for the best since most students have the combined IQ of a pencil sharpener
 
-Some of the tasks in the lab was to set up SSH keys (done in 2 minutes), than some basic recon with nmap and open source tools. Me and the two I usually work with finished it in like 15 minutes so we started talking about what we could do with the server because we didn't have access to other students folders. We had just base privileges, access to our own stuff. I figured that since we had access to the machine we might aswell test and see what we could to do. Sudo was not installed so we couldn't see what we could do as root. So I just check what SUIDs we had and found that NMAP was installed as root and ran as root.
+One of the tasks was to set up SSH keys (done in 2 minutes), than some basic recon with nmap and open source tools. Me and the two I usually work with finished it in like 15 minutes so we started talking about what we could do with the server because we didn't have access to other students folders. We had just base privileges, access to our own stuff. I figured that since we had access to the machine we might aswell test and see what we could to do. Sudo was not installed so we couldn't see what we could do as root. So I just checked what SUIDs we had and found that NMAP was installed as root and ran as root.
 
 
-On Linux, the SUID (Set-User-ID) bit lets a binary run with the privileges of its owner rather than the invoking user. When the owner is `root` and the binary can execute arbitrary code directly or through a scripting interface the SUID bit becomes a privilege-escalation primitive.
+On Linux, the SUID (Set-User-ID) bit lets a binary run with the privileges of its owner rather than the invoking user. When the owner is `root` and the binary can execute arbitrary code directly or through a scripting interface the SUID bit becomes a privilege-escalation vector.
 
 
 So I identified `nmap` since it had SUID as root. Modern nmap (5.21+) removed its old `--interactive` shell, but its Lua-based **NSE (Nmap Scripting Engine)** is more than capable of running arbitrary code. If `nmap` is SUID root, NSE scripts inherit that privilege.
@@ -137,7 +137,7 @@ Root achieved via a misconfigured SUID binary and NSE.
 
 ## Fucking Around and finding out
 
-So after that we started going through the server, more specifically we checked lecturers account and find a password file with all the students 12 character passwords (mentioned in the start). He had used it to create the users, kinda smart only that he kept the file on the server. After that we checked the `.bash_history` of both the lecturer and the other students just for fun. The school have not found it yet to our knowledge so we left a note in the `/root` that we can reference in the exam.
+So after that we started going through the server, more specifically we checked lecturers account and find a password file with all the students 12 character passwords (mentioned in the start). He had used it to create the users, kinda smart that he kept the file on the server (master in cybersec lecturer BTW). After that we checked the `.bash_history` of both the lecturer and the other students just for fun. The school have not found it yet to our knowledge so we left a note in the `/root` that we can reference in the exam.
 
 ## Lessons
 
