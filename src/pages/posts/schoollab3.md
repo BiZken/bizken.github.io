@@ -157,4 +157,5 @@ I really wanted to get a full root shell and I tried multiple things
  - SUID
  - Writable Files
  - cronjobs (none existed)
+
  But I could not find anything, I thing its because the container is only the absolute bare minimum which makes it a so much harder, so for now the FLAG3 priv esc will have to do. There was a helper.sh file but it wasn't linked to the backup.sh even though they echo the same maybe it should be linked somhow but isn't, guess we'll never know.
