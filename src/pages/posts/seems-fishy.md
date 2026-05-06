@@ -160,7 +160,6 @@ Checking the location on maps I it is  clear that it is there, I just check it b
 
 To see what animal the lobster replaced I checked with streetview but there is no picture of either the lobster or any other animal except the fish and the octupus aswell as a praw. Looking at the stone of the prawn its not that. However on the other picture on the `https://www.komoot.com/highlight/4861111` site you can see a sea horse and on the streetview the stone the lobster is  on theres nothing. Then the single neuron I have started and thought that the street view was taken between the switch between the lobster and the seahorse and submitting `seahorse` gives us a ***congratulations***
 
-<img src="/SeemsFishy/InitalView.png" alt="Res1" style="max-width: 500px; width: 100%;">
 <img src="/SeemsFishy/found3.png" alt="Res1" style="max-width: 500px; width: 100%;">
 <img src="/SeemsFishy/found5.png" alt="Res1" style="max-width: 500px; width: 100%;">
 
