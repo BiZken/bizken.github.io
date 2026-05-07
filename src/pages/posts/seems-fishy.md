@@ -11,7 +11,7 @@ backLabel: Back to writeups
 
 ## Challenge Overview
 
-Starting of we have a singel picture of a lobster statue, first thing I tested was a reverse image search to see if I would get any locations but it would not return any useful info.
+Starting of we have a single picture of a lobster statue, first thing I tested was a reverse image search to see if I would get any locations but it would not return any useful info.
 
 <img src="/SeemsFishy/Init.jpg" alt="Res1" style="max-width: 500px; width: 100%;">
 
