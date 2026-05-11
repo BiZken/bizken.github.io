@@ -13,7 +13,7 @@ backLabel: Back to writeups
 
 In December 2017, Christiaan Triebert hosted a workshop as a representative of Bellingcat, find the name of the room he is sitting in when the image was taken.
 
-<img src="/TrainingTime/Init.jpg" alt="Res1" style="max-width: 500px; width: 100%;">
+<img src="/TrainingTime/Init.jpeg" alt="Res1" style="max-width: 500px; width: 100%;">
 
 
 
@@ -23,7 +23,7 @@ First I did an inital analysis of the image and focused on areas that could help
 
 
 1. Walls - The walls have a specific design that with green rectangles on a "cream" base
-2. Carpet - the carpet is pretty much fully covered so I assumed that its not a nordic country, also becuase its December and they are not wearing anything big/warm, I assumed some musim country just becuase of the style.
+2. Carpet - the carpet is pretty much fully covered so I assumed that its not a nordic country, also because its December and they are not wearing anything big/warm, I assumed some musim country just because of the style.
 3. Door - the door has a special style, big with lots of small details/carvings
 4. water bottle - one thing I wanted to see was if I could identify the waterbottle to see if I could focus on certain areas, some brands are tied to specific regions
 
