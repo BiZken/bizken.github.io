@@ -85,7 +85,7 @@ However going to this profile on the events website you can see where he will ha
 
 I started to look at images of the event to see if I could see something that looked like the inital picture and eventually I came across one that had similar walls, no exactly the same I think but close enough for me to react on it, si i figured that it might be another room at the event.
 
-<img src="/TrainingTime/Room_.png" alt="Res1" style="max-width: 500px; width: 100%;">
+<img src="/TrainingTime/Room_.jpg" alt="Res1" style="max-width: 500px; width: 100%;">
 
 
 
